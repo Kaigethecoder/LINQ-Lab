@@ -1,0 +1,50 @@
+using System.Linq;
+
+public class MyProgram
+{
+    public static void Main()
+    {
+        //create array: int[] nums = {10, 2330, 112233, 10, 949, 3764, 2942, 523863};
+        //write code using linq to answer min value, max, max less 10k, all values between 10 and 100, all values 100k to 999,999, count all even numbers
+
+        int[] nums = { 10, 2330, 112233, 10, 949, 3764, 2942, 523863 };
+        //Find minimum value
+        Console.WriteLine("min value");
+        nums.Min();
+        int minValue = nums.Min();
+        Console.WriteLine(minValue);
+
+        //Find max value
+        Console.WriteLine("max value");
+        nums.Max();
+        int maxValue = nums.Max();
+        Console.WriteLine(maxValue);
+
+        //max less than 10k
+        Console.WriteLine("max number less than 10k");
+        var lessThan10000 = nums.Where((x) => x < 10000).ToArray();
+        var maxLessThan10000 = lessThan10000.Max();
+        Console.WriteLine(maxLessThan10000);
+        //values between 10 and 100
+        Console.WriteLine("Values 10 to 100");
+        var between10and100 = nums.Where((x) => (x >= 10 && x <= 100)).ToArray();
+        foreach (var x in between10and100)
+        {
+            Console.WriteLine(x);
+        }
+        //100k-999,999
+        Console.WriteLine("100k to 999,999k");
+        var between100and1M = nums.Where((x) => (x >= 100000 && x <= 999999)).ToArray();
+        foreach (var x in between100and1M)
+        {
+            Console.WriteLine(x);
+        }
+        //all even numbers
+        Console.WriteLine("All even numbers");
+        var even = nums.Where((x) => (x % 2 == 0)).ToArray();
+        foreach (var x in even)
+        {
+            Console.WriteLine(x);
+        }
+    }
+}
